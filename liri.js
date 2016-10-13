@@ -113,12 +113,3 @@ else if (argument === 'movie-this'){
 	}
 // ==============================================================================================================
 
-else if (argument === 'do-what-it-says'){
-	var fs = require('fs');
-	fs.readFile('random.txt', 'utf8', function(err,data){
-		var output = data.split(',');
-		spotify(output[1]);
-	})
-;
- // console.log(output) ;
-}
