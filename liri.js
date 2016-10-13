@@ -4,17 +4,13 @@ var client = JSON.stringify(client);
 var Twitter = require('twitter');
 var clientInfo = new Twitter(client);
 
-
+// ==================================================================================================
 
 var argument = process.argv[2];
 var movieOrSong = process.argv[3];
 
-
+// ==================================================================================================
 if (argument === 'my-tweets'){
-
-
-		//---------- TWITTER - THIS WORKS
-
 			var params = {screen_name: 'chris_liri'};
 			clientInfo.get('statuses/user_timeline', params, function(error, tweets, response){
 			  if (!error) {
@@ -25,7 +21,6 @@ if (argument === 'my-tweets'){
 			  	console.log(error);
 			  }
 			});	
-//----------  END TWITTER - THIS WORKS
 }
 
 // ==================================================================================================
@@ -117,3 +112,13 @@ else if (argument === 'movie-this'){
 		});
 	}
 // ==============================================================================================================
+
+else if (argument === 'do-what-it-says'){
+	var fs = require('fs');
+	fs.readFile('random.txt', 'utf8', function(err,data){
+		var output = data.split(',');
+		spotify(output[1]);
+	})
+;
+ // console.log(output) ;
+}
